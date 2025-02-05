@@ -73,6 +73,7 @@ fn main() {
                     }
                     cntr += 1;
                 }
+                println!("cntr: {}", cntr);
                 if num_moves == 0 {
                     // TODO retire
                 }
