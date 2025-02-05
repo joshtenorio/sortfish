@@ -1,0 +1,28 @@
+on:
+  push:
+    branches:
+      - dev
+
+env: 
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test-tauri:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: "ubuntu-22.04"
+            args: ""
+          #- platform: "windows-latest"
+          #  args: ""
+
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: check build
+        run: cargo build
